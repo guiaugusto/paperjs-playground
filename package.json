@@ -1,0 +1,22 @@
+{
+  "name": "paperjs-playground",
+  "version": "1.0.0",
+  "description": "Playground to test many uses for paper.js",
+  "main": "example.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/guiaugusto/paperjs-playground.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/guiaugusto/paperjs-playground/issues"
+  },
+  "homepage": "https://github.com/guiaugusto/paperjs-playground#readme",
+  "devDependencies": {
+    "paper": "^0.12.4"
+  }
+}
