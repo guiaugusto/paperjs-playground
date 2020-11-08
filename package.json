@@ -1,5 +1,5 @@
 {
-  "name": "paperjs-playground",
+  "name": "drawer-test",
   "version": "1.0.0",
   "description": "Playground to test many uses for paper.js",
   "main": "example.js",
@@ -10,13 +10,13 @@
     "type": "git",
     "url": "git+https://github.com/guiaugusto/paperjs-playground.git"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Guilherme Silva",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/guiaugusto/paperjs-playground/issues"
   },
   "homepage": "https://github.com/guiaugusto/paperjs-playground#readme",
   "devDependencies": {
-    "paper": "^0.12.4"
+    "paper": "^0.12.8"
   }
 }
