@@ -1,16 +1,30 @@
-// executa o paperjs no canvas
+// execute paperjs in canvas
 paper.install(window);
 paper.setup('myCanvas')
 
-// cria o caminho geral
+// creates general path
 var path = new Path();
 path.strokeColor = 'black';
 
-function calculate_point(xa, ya, angle, distance) {
-    let ca = distance * Math.cos(angle);
-    let co = distance * Math.sin(angle);
+// follows canvas orientation
+// x - and y +  |  x + and y +
+// _____________|_____________
+//              | 
+// x - and y -  |  x + and y -
+function get_orientation(angle) {
+    if (angle >= 0 && angle < 90) return [1, 1];
+    else if (angle >= 90 && angle < 180) return [-1, 1];
+    else if (angle >= 180 && angle < 270) return [-1, -1];
+    else return [1, -1];
+}
 
-    return [xa + ca, ya + co];
+function calculate_point(xa, ya, angle, distance) {
+    let ca = distance * Math.cos(angle * (Math.PI/180));
+    let co = distance * Math.sin(angle * (Math.PI/180));
+
+    let direction = get_orientation(angle);
+
+    return [xa + ca * direction[0], ya + co * direction[1]];
 }
 
 class Turtle {
@@ -19,8 +33,8 @@ class Turtle {
         this.y = y;
         this.angle = 0;
         
-        // cria uma lista de comandos que armazenará cada
-        // ponto criado por cada comando executado
+        // creates a command list that will store each
+        // created point by each executed command
         this.pathSet = [];
         this.pathSet.push(new Point(x, y));
     }
@@ -36,6 +50,14 @@ class Turtle {
         this.pathSet.forEach(element => {
             path.add(element)
         });
+    }
+
+    right(received_angle) {
+        this.angle = (360 - this.angle - received_angle) % 360;
+    }
+
+    left(received_angle) {
+        this.angle = (this.angle + received_angle) % 360;
     }
 
     forward(distance) {
