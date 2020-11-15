@@ -46,6 +46,7 @@ class Turtle {
         this.x = Math.round(x);
         this.y = Math.round(y);
         this.angle = 0;
+        this.speed = 1;
         
         // creates a command list that will store each
         // created point by each executed command
@@ -61,7 +62,9 @@ class Turtle {
     draw() {
         let seg = 0;
         path.onFrame = (event) => {
-            if (seg < this.pathSet.length) path.add(this.pathSet[seg++]);
+            for (let i = 0; i < this.speed; i++)
+                if (seg < this.pathSet.length)
+                    path.add(this.pathSet[seg++]);
         };
     }
 
